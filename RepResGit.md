@@ -18,7 +18,6 @@ This report analyses which of those weather events caused the most damage in pop
   5. Group all events that account for too few observations under a new variable called "others".
 * Calculate damage values for property damage and crop damage and store them under new variables.
 
-
 ### Load Data
 ```{r cache = TRUE}
 data <- read.csv("repdata-data-StormData.csv", header = T)
@@ -60,7 +59,6 @@ data$evtype[grep("thunderstorm", data$evtype)] <- "thunderstorm"
 ```
 
 We can observe that these events account for 97.8% of all observations, so we will group all other events and label this new category as "others".
-
 
 ```{r}
 sum(data$evtype %in% c("flood","wind","snow","tornado","hail","rain","lightning","winter","fog","heat","surf","ice storm","wild fire","storm surge","hurricane","drought","thunderstorm"))/nrow(data)
@@ -107,7 +105,12 @@ data$cropdamage <- data$cropdmg * data$cropdmgexp
 ## Damages to Population Health
 
 * Injuries: Tornados are the cause for the majority of injuries(66.1%) among all weather events. If we look at the five weather events that cause more injuries to the population, which are tornados, wind, heat, floods and lightnings, in that order, they account for over 90% of all injuries. 
+
+![Injuries](injuries.png)
+
 * Fatalities: Tornados are too the main cause for fatalities (38.4%) in the population among all weather events. The most damaging weather events not labeled as "others" are responsible for over 78% of fatalities recorded, these are: tornados, heat, floods and wind, in that order.
+
+![Fatalities](fatalities.png)
 
 It is clear that the three most damaging weather events to the health of the general population in the U.S. are tornados, heat and flood in that order, however, tornados remain well above floods and heat as the most dangerous weather event.
 
@@ -131,26 +134,28 @@ sort(totalFatal, decreasing = T)[1:5]
 # Calculate the percentage of fatalities that the top 5 events represent
 sum(sort(totalFatal, decreasing = T)[1:5])/sum(totalFatal)
 ```
+
 ### Figure 1: Injuries
 Plotting Injuries
 ```{r figure.width = 1800, figure.height = 600}
-png("injuries.png", width=1800, height=600)
 barplot(sort(totalInjuries, decreasing = T)[1:8], main = "Injuries", col="orange",xlab="8 Most Injuring Event Types", ylab="Injuries")
-dev.off()
 ```
+
 ### Figure 2: Fatalities
 Plotting Fatalities
 ```{r figure.width = 1800, figure.height = 600}
-png("fatalities.png", width=1800, height=600)
 barplot(sort(totalFatal, decreasing = T)[1:8], main = "Fatalities", col="red",xlab="8 Most Fatal Event Types", ylab="Fatalities")
-dev.off()
 ```
 
 ## Economic Cost
 
 * Porperty Damage: Floods are the main cause for porperty damages(48%) among all weather events. If we account the property damage caused by floods, tornados, hail and wind, they account for over 74% of the property damage caused by all weather events.
+
+![Property Damage](propdmg.png) 
+
 * Crop Damage: The main cause for crop damages among all weather events is drought(31%). If we account for the crop damage caused by droughts, floods, ice storms, and hail, they account for over 76% of crop damages caused by all weather events.
 
+![Crop Damage](cropdmg.png)
 
 ```{r}
 # Get the event that caused the most property damage
@@ -174,21 +179,17 @@ sort(totalCropDamage, decreasing = T)[1:5]
 sum(sort(totalCropDamage, decreasing = T)[1:3])/sum(totalCropDamage) 
 + sum(sort(totalCropDamage, decreasing = T)[5])/sum(totalCropDamage)
 ```
+
 ### Figure 3: Property Damage
 Plotting Property Damage
 ```{r figure.width = 1800, figure.height = 600}
 reducedPropDamage <- totalPropDamage/1000000
-png("propdmg.png", width=1800, height=600)
 barplot(sort(reducedPropDamage, decreasing = T)[1:8], main = "Property Damage", col="blue",xlab="8 Most Damaging Event Types", ylab="Property damage in millons of USD")
-dev.off()
 ```
+
 ### Figure 4: Crop Damage
 Plotting Crop Damage
 ```{r figure.width = 1800, figure.height = 600}
 reducedCropDamage <- totalCropDamage/1000000
-png("cropdmg.png", width=1800, height=600)
 barplot(sort(reducedCropDamage, decreasing = T)[1:8], main = "Crop Damage", col="green",xlab="8 Most Damaging Event Types", ylab="Crop damage in millons of USD")
-dev.off()
 ```
-
-
