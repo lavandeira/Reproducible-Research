@@ -108,12 +108,12 @@ data$cropdamage <- data$cropdmg * data$cropdmgexp
 * Injuries: Tornados are the cause for the majority of injuries(66.1%) among all weather events. If we look at the five weather events that cause more injuries to the population, which are tornados, wind, heat, floods and lightnings, they account for over 90% of all injuries. 
 
 ### Figure 1: Injuries
-![Injuries](C:/Users/Josué Lavandeira/Desktop/Coursera/DSS/Coursera R/injuries.png)
+![Injuries](https://github.com/lavandeira/Reproducible-Research/blob/master/injuries.png)
 
 * Fatalities: Tornados are too the main cause for fatalities (38.4%) in the population among all weather events. The top five weather events responsible for over 87% of fatalities recorded are: tornados, heat, floods, others and wind.
 
 ### Figure 2: Fatalities
-![Fatalities](C:/Users/Josué Lavandeira/Desktop/Coursera/DSS/Coursera R/fatalities.png)
+![Fatalities](https://github.com/lavandeira/Reproducible-Research/blob/master/fatalities.png)
 
 It is clear that the three most damaging weather events to the health of the general population in the U.S. are tornados, heat and flood in that order, however, tornados remain well above floods and heat as the most dangerous weather event.
 
@@ -157,12 +157,12 @@ dev.off()
 * Porperty Damage: Floods are the main cause for porperty damages(48%) among all weather events. If we account the property damage caused by floods, tornados, hail and wind, they account for over 74% of the property damage caused by all weather events.
 
 ### Figure 3: Property Damage
-![Property Damage](C:/Users/Josué Lavandeira/Desktop/Coursera/DSS/Coursera R/propdmg.png)
+![Property Damage](https://github.com/lavandeira/Reproducible-Research/blob/master/propdmg.png)
 
 * Crop Damage: The main cause for crop damages among all weather events is drought(31%). If we account for the crop damage caused by droughts, floods, ice storms, and hail, they account for over 76% of crop damages caused by all weather events.
 
 ### Figure 4: Crop Damage
-![Crop Damage](C:/Users/Josué Lavandeira/Desktop/Coursera/DSS/Coursera R/cropdmg.png)
+![Crop Damage](https://github.com/lavandeira/Reproducible-Research/blob/master/cropdmg.png)
 
 ```{r}
 # Get the event that caused the most property damage
